@@ -99,7 +99,7 @@ Modelo Conceitual (DER)
 
 Representa as entidades, seus atributos, relacionamentos e respectivas cardinalidades, conforme as regras do Modelo Entidade-Relacionamento (MER).
 
-!Modelo Conceitual
+![Modelo Conceitual](./diagramas/Modelo%20Conceitual.drawio.png)
 
 Visualizar Modelo Conceitual
 
@@ -107,7 +107,7 @@ Modelo Lógico Relacional
 
 Apresenta a transformação do modelo conceitual em tabelas relacionais, identificando atributos, chaves primárias (PK), chaves estrangeiras (FK) e relacionamentos entre as tabelas.
 
-!Modelo Lógico
+![Modelo Lógico](./diagramas/Modelo%20Lógico.drawio.png)
 
 Visualizar Modelo Lógico
 
