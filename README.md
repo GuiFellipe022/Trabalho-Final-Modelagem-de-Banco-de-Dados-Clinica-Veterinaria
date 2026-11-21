@@ -118,6 +118,10 @@ A implementação física foi realizada utilizando o Supabase, com PostgreSQL co
 
 Foram criadas as 15 tabelas do projeto, com suas respectivas colunas, tipos de dados, chaves primárias, chaves estrangeiras e restrições.
 
+![Modelo Físico](./diagramas/Supabase.png)
+
+Visualizar Modelo Físico
+
 Também foram implementadas restrições de integridade, como NOT NULL, UNIQUE e relacionamentos entre tabelas.
 
 A tabela Atendimento possui uma restrição UNIQUE sobre o campo id_consulta, garantindo que uma consulta não possua mais de um atendimento associado.
