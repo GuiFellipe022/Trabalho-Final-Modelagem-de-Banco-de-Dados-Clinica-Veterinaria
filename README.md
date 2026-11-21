@@ -1,62 +1,210 @@
+🐾 Sistema de Gestão de Clínica Veterinária
 
-Projeto de modelagem de banco de dados relacional para um sistema de gestão de clínica veterinária, contemplando as etapas de **Modelagem Conceitual (DER)** e **Modelagem Lógica (Relacional)**. O sistema abrange o cadastro de tutores e animais, controle de veterinários e suas especialidades, agendamento de consultas, registro de atendimentos clínicos e histórico de vacinação.
+Este projeto foi desenvolvido como Trabalho Final da disciplina de Modelagem de Banco de Dados, com o objetivo de aplicar os conhecimentos adquiridos ao longo do semestre na criação e implementação de um banco de dados relacional.
 
-O objetivo desta modelagem é estruturar os dados essenciais para a operação de uma clínica veterinária, garantindo integridade referencial, normalização de atributos multivalorados e compostos, e rastreabilidade completa do histórico clínico e vacinal de cada paciente.
+O sistema consiste em uma solução fictícia de gerenciamento para uma clínica veterinária, desenvolvida para organizar e controlar informações de tutores, animais, veterinários, especialidades, consultas, atendimentos e vacinações.
 
----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+A proposta busca solucionar a necessidade de centralizar e organizar os dados da clínica, facilitando o gerenciamento dos cadastros, o acompanhamento da saúde dos animais e o controle dos serviços veterinários.
 
-Descrição do MER:
+O projeto contempla as etapas de desenvolvimento de um banco de dados: modelagem conceitual, modelagem lógica e modelagem física, além da implementação de tabelas, relacionamentos, operações CRUD e consultas SQL para geração de relatórios.
 
-ENTIDADES - Tutor: A entidade tutor representa os tutores dos animais que estão cadastrados no Petshop, são os donos. Nele estão guardados os atributos de Nome, telefone, CPF, E-Mail, ID do Tutor, e dados de endereço como cidade, rua, número, bairro e cep.
+Tecnologias utilizadas:
 
-Animal: A entidade animal representa os animais que estão cadastrados no PetShop. Nela estão guardados os atributos de Nome, raça, sexo, espécie, ID do animal, porte, data de nascimento e idade.
+PostgreSQL
+Supabase
+SQL
+GitHub
+Draw.io (diagrams.net)
 
-Vacina: A entidade vacina representa as vacinas que os animais que estão cadastrados no PetShop receberam. Nela estão guardados os atributos de Nome, fabricante, descrição, intervalo de doses e ID da vacina.
+1. Cenário
 
-Veterinário: A entidade veterinário representa os veterinários que trabalham no PetShop e que estão cadastrados no sistema. Nele estão guardados os atributos de Nome, CPF, CRMV, E-Mail, telefone, data de contratação, ID do veterinário. 
+O projeto consiste no desenvolvimento de um banco de dados para uma clínica veterinária fictícia, denominada Clínica Veterinária Vida Animal.
 
-Especialidade: A entidade especialidade representa as especialidades dos veterinários que estão cadastrados no sistema. Nela estão guardados os atributos de Nome, descrição da especialidade e ID da especialidade dos veterinários. 
+A clínica realiza atendimentos veterinários, consultas, acompanhamento clínico, vacinação e outros serviços relacionados à saúde e ao bem-estar dos animais.
 
-Consulta: A entidade consulta representa as consultas que estão marcadas no PetShop e que estão cadastradas no sistema. Nela estão guardados os atributos de motivo, horário, status da consulta, valor da consulta, ID da consulta e a data da consulta. 
+Com o crescimento da quantidade de clientes e animais atendidos, surgiu a necessidade de informatizar o gerenciamento das informações, substituindo controles manuais por um sistema organizado e centralizado.
 
-Atendimento: A entidade atendimento representa o atendimento que foi feito após a consulta e qual a conclusão do veterinário diante de cada caso. Nela estão guardados os atributos de sintomas, diagnóstico, data de atendimento, tratamento, observações e ID do atendimento realizado. 
+O banco de dados foi desenvolvido para armazenar e relacionar informações de tutores, animais, veterinários, especialidades, consultas, atendimentos, vacinas e contatos.
 
+Objetivos do sistema:
 
+Cadastrar tutores e seus respectivos animais.
+Manter informações dos veterinários e suas especialidades.
+Registrar consultas e atendimentos.
+Controlar aplicações de vacinas e próximas doses.
+Armazenar telefones e e-mails dos tutores e veterinários.
+Facilitar consultas e relatórios administrativos.
+Garantir a integridade e a organização das informações.
+Entidades do sistema
 
+2. Modelagem Conceitual
 
-ATRIBUTOS - A entidade TUTOR recebe atributo identificador (id_tutor), 2 atributos simples (Nome); (CPF), 2 atributos Multivalorados (E-mail); (Telefone), e um atributo composto (Endereço) que vai se dividir em (Cidade), (Rua), (Número), (Bairro), (CEP). 
+A modelagem conceitual foi desenvolvida utilizando o Modelo Entidade-Relacionamento (MER), representando as entidades, seus atributos e os relacionamentos existentes entre elas.
 
-A entidade ANIMAL recebe atributo identificador (id_animal), 6 atributos simples (Nome); (Raça); (Sexo); (Espécie); (Porte); (Data_nascimento), e um atributo derivado (Idade). 
+O modelo contempla os seguintes tipos de atributos:
 
-A entidade VETERINÁRIO recebe atributo identificador (id_veterinario), 4 atributos simples (Nome);  (CRMV); (CPF); (Data de contratação), também recebe 2 atributos multivalorados (E-Mail); (Telefone). 
+Simples: nome, CPF, CRMV, valor da consulta e fabricante.
+Compostos: endereço do tutor, dividido em rua, número, bairro, cidade e CEP.
+Multivalorados: telefones e e-mails, permitindo múltiplos contatos.
+Derivados: idade do animal, calculada a partir da data de nascimento.
+Chaves primárias: identificadores únicos de cada entidade.
+Relacionamentos
 
-A entidade CONSULTA  recebe atributo identificador (id_consulta), e 5 atributos simples (Data_consulta); (Horário); (Valor); (Status_consulta); (Motivo).
+O modelo apresenta os seguintes relacionamentos:
 
-A entidade ATENDIMENTO  recebe atributo identificador (id_atendimento), e 5 atributos simples (Data_atendimento); (Diagnóstico); (Síntomas); (Tratamento); (Observações).
+1:1 (Um para Um)
 
-A entidade ESPECIALIDADE  recebe atributo identificador (id_especialidade), e 2 atributos simples (Nome); (Descrição).
+Consulta e Atendimento: cada consulta pode possuir um único atendimento associado.
 
-A entidade VACINA  recebe atributo identificador (id_vacina), e 4 atributos simples (Intervalo_doses); (Nome); (Fabricante); (Descrição).
+1:N (Um para Muitos)
 
+Tutor e Animal.
+Animal e Consulta.
+Veterinário e Consulta.
+Animal e Vacinação.
+Vacina e Vacinação.
 
+N:N (Muitos para Muitos)
 
+Veterinário e Especialidade.
+Tutor e Telefone.
+Veterinário e Telefone.
+Tutor e E-mail.
+Veterinário e E-mail.
 
-RELACIONAMENTOS E CARDINALIDADES - 
+Os relacionamentos N:N são implementados por meio de tabelas associativas, garantindo a organização e a integridade dos dados.
 
-Tutor - Possuí - Animal: (1:N).
-Explicação: Nesse relacionamento um tutor pode possuir vários animais cadastrados na clínica, porém cada animal pertence a apenas um tutor.
+3. Modelagem Lógica
 
-Animal - Realiza - Consulta: (1:N).
-Explicação: Nesse relacionamento um animal pode realizar várias consultas, porém cada consulta está relacionada a apenas um único animal. 
+A modelagem lógica transforma o modelo conceitual em um conjunto de tabelas relacionais.
 
-Veterinário - Atende - Consulta: (1:N).
-Explicação: Nesse relacionamento um veterinário pode realizar diversas consultas, enquanto cada consulta é realizada por um único veterinário. 
+Foram definidos os atributos, tipos de dados, chaves primárias (PK) e chaves estrangeiras (FK), respeitando os relacionamentos e as regras de integridade referencial.
 
-Consulta - Gera - Atendimento: (1:1).
-Explicação: Nesse relacionamento cada consulta pode possuir um único atendimento associado, e cada atendimento pertence a uma única consulta.
+Os principais tipos de dados utilizados são:
 
-Animal - Recebe - Vacina: (N:N).
-Explicação: Nesse relacionamento cada animal pode receber diferentes vacinas e diferentes vacinas podem ser aplicadas nos animais. 
+INTEGER: identificadores e relacionamentos.
+VARCHAR: nomes, descrições e informações textuais.
+DATE: datas de nascimento, consultas e vacinações.
+TIME: horários das consultas.
+NUMERIC: valores financeiros.
+TEXT: observações e descrições.
 
-Veterinário - Possui - Especialidade: (N:N).
-Explicação: Nesse relacionamento um veterinário pode possuir várias especialidades, e uma mesma especialidade pode pertencer a vários veterinários da clínica. 
+As chaves estrangeiras garantem que os registros relacionados estejam vinculados corretamente, evitando referências inexistentes.
+
+Diagramas do Banco de Dados
+
+Os diagramas foram desenvolvidos utilizando a ferramenta Draw.io (diagrams.net), representando visualmente as etapas de modelagem do banco de dados da Clínica Veterinária.
+
+Modelo Conceitual (DER)
+
+Representa as entidades, seus atributos, relacionamentos e respectivas cardinalidades, conforme as regras do Modelo Entidade-Relacionamento (MER).
+
+!Modelo Conceitual
+
+Visualizar Modelo Conceitual
+
+Modelo Lógico Relacional
+
+Apresenta a transformação do modelo conceitual em tabelas relacionais, identificando atributos, chaves primárias (PK), chaves estrangeiras (FK) e relacionamentos entre as tabelas.
+
+!Modelo Lógico
+
+Visualizar Modelo Lógico
+
+4. Modelagem Física
+
+A implementação física foi realizada utilizando o Supabase, com PostgreSQL como sistema gerenciador de banco de dados.
+
+Foram criadas as 15 tabelas do projeto, com suas respectivas colunas, tipos de dados, chaves primárias, chaves estrangeiras e restrições.
+
+Também foram implementadas restrições de integridade, como NOT NULL, UNIQUE e relacionamentos entre tabelas.
+
+A tabela Atendimento possui uma restrição UNIQUE sobre o campo id_consulta, garantindo que uma consulta não possua mais de um atendimento associado.
+
+Scripts SQL
+
+Os scripts utilizados na implementação estão organizados no repositório:
+
+sql/01_criacao_tabelas.sql
+sql/02_insercao_dados.sql
+sql/03_testes_relacionamentos.sql
+sql/04_operacoes_crud.sql
+sql/05_relatorios.sql
+Implementação no Supabase
+
+As capturas de tela da implementação física, incluindo a estrutura das tabelas e seus relacionamentos, estão disponíveis na pasta prints/ deste repositório.
+
+5. Dados
+
+O banco de dados foi preparado para receber informações fictícias e coerentes com o cenário da clínica veterinária, atendendo ao requisito mínimo de 500 registros em cada tabela.
+
+Os dados contemplam:
+
+Tutores com informações cadastrais.
+Animais com diferentes nomes, espécies, raças e portes.
+Veterinários com informações profissionais.
+Especialidades veterinárias.
+Consultas com datas, horários, motivos e valores.
+Atendimentos com diagnósticos, sintomas e tratamentos.
+Vacinas e registros de vacinação.
+Telefones e e-mails vinculados aos respectivos responsáveis.
+
+Os dados são fictícios e utilizados exclusivamente para fins acadêmicos e testes de funcionamento do banco de dados.
+
+6. CRUD
+
+Foram realizados testes das quatro operações fundamentais de manipulação de dados, conhecidas como CRUD.
+
+CREATE (Inserção)
+
+Utilização do comando INSERT para cadastrar novos tutores, animais, veterinários e demais informações.
+
+READ (Consulta)
+
+Utilização do comando SELECT para consultar os registros armazenados e visualizar os relacionamentos entre as tabelas.
+
+UPDATE (Atualização)
+
+Utilização do comando UPDATE para modificar informações previamente cadastradas.
+
+DELETE (Exclusão)
+
+Utilização do comando DELETE para remover registros, respeitando as restrições de integridade referencial.
+
+As capturas de tela das operações realizadas estão disponíveis na pasta prints/ do repositório.
+
+7. Relatórios
+
+Foram desenvolvidas 10 consultas SQL para demonstrar a capacidade de recuperação e análise das informações armazenadas no banco de dados.
+
+As consultas utilizam SELECT, WHERE, ORDER BY e JOIN, explorando os relacionamentos entre as entidades.
+
+Relatórios desenvolvidos
+Tutores e seus animais: apresenta os tutores e os respectivos animais cadastrados.
+Animais por espécie: apresenta os animais conforme suas espécies.
+Consultas por veterinário: identifica os profissionais responsáveis pelas consultas realizadas.
+Histórico de atendimentos: apresenta os diagnósticos, sintomas e tratamentos registrados.
+Vacinas aplicadas: apresenta as vacinas administradas nos animais.
+Próximas doses de vacinas: identifica as próximas datas previstas para vacinação.
+Veterinários e especialidades: apresenta os profissionais e suas respectivas áreas de atuação.
+Consultas por período: permite consultar os atendimentos de acordo com as datas.
+Faturamento por veterinário: apresenta os valores das consultas associados aos profissionais.
+Histórico completo dos animais: reúne informações dos animais, tutores, consultas, veterinários e atendimentos.
+
+As consultas demonstram a integração entre as tabelas e a utilização dos comandos SQL para geração de informações relevantes à administração da clínica.
+
+Considerações Finais
+
+O desenvolvimento deste projeto permitiu aplicar, na prática, os conceitos de modelagem de banco de dados, desde a identificação das necessidades do cenário até a implementação física utilizando PostgreSQL no Supabase.
+
+A construção dos modelos conceitual, lógico e físico possibilitou compreender a importância da organização das entidades, dos relacionamentos, das chaves primárias e estrangeiras e das restrições de integridade.
+
+Além disso, a realização dos testes CRUD e a elaboração dos relatórios SQL demonstraram a capacidade do banco de dados de armazenar, relacionar, atualizar e recuperar informações.
+
+Dessa forma, o projeto representa uma solução de gerenciamento de informações para uma clínica veterinária fictícia, consolidando os conhecimentos adquiridos na disciplina de Modelagem de Banco de Dados.
+
+Disciplina: Modelagem de Banco de Dados
+Trabalho: 2º Bimestre – Trabalho Final
+Banco de dados: PostgreSQL / Supabase
+Ferramenta de diagramas: Draw.io
+Repositório: Sistema de Gestão de Clínica Veterinária
