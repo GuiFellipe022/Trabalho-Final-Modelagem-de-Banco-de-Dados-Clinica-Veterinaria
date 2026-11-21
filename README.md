@@ -24,7 +24,7 @@ A clínica realiza atendimentos veterinários, consultas, acompanhamento clínic
 
 Com o crescimento da quantidade de clientes e animais atendidos, surgiu a necessidade de informatizar o gerenciamento das informações, substituindo controles manuais por um sistema organizado e centralizado.
 
-O banco de dados foi desenvolvido para armazenar e relacionar informações de tutores, animais, veterinários, especialidades, consultas, atendimentos, vacinas e contatos.
+O banco de dados foi desenvolvido para armazenar e relacionar informações de tutores, animais, veterinários, especialidades, consultas, atendimentos, e vacinas.
 
 Objetivos do sistema:
 
@@ -48,7 +48,8 @@ Compostos: endereço do tutor, dividido em rua, número, bairro, cidade e CEP.
 Multivalorados: telefones e e-mails, permitindo múltiplos contatos.
 Derivados: idade do animal, calculada a partir da data de nascimento.
 Chaves primárias: identificadores únicos de cada entidade.
-Relacionamentos
+
+Relacionamentos:
 
 O modelo apresenta os seguintes relacionamentos:
 
